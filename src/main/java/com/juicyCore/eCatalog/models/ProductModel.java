@@ -27,8 +27,7 @@ public class ProductModel {
 
    @ManyToOne
    @OnDelete(action = OnDeleteAction.CASCADE)
-   @JoinColumn (name = "fk_category_id",referencedColumnName = "CATEGORY_ID")
-   //@JsonIgnore
+   @JoinColumn (name = "category_id",referencedColumnName = "CATEGORY_ID")
    private CategoryModel category;
 
     public ProductModel(Long id,

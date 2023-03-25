@@ -2,6 +2,8 @@ package com.juicyCore.eCatalog.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.util.List;
@@ -21,6 +23,10 @@ public class CategoryModel {
     private String name;
     @Column(name = "CATEGORY_TYPE")
     private String type;
+
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private List<ProductModel> productModel;
 
     public CategoryModel(@JsonProperty("id") Long id,
                          @JsonProperty("name") String name,

@@ -9,8 +9,10 @@ import java.util.List;
 
 
 @RestController
+@CrossOrigin
 @RequestMapping("/api/products")
 public class ProductController {
+
     private final ProductService productService;
 
     @Autowired
@@ -22,6 +24,7 @@ public class ProductController {
     public String addNew(@RequestBody ProductDTO product){
         return productService.addProduct(product);
     }
+
 
     @GetMapping(path = "/allProducts")
     public List<ProductModel> getAllProducts(){

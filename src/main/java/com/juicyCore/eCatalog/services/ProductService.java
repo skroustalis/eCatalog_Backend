@@ -29,7 +29,7 @@ public class ProductService {
         prod.setCost(product.getCost());
         prod.setQuantity(product.getQuantity());
         prod.setName(product.getName());
-        prod.setCategory(categoryRepository.getById(product.getCategory()));
+        prod.setCategory(categoryRepository.getReferenceById(product.getCategory()));
         productRepository.save(prod);
         response = "Product add successfully";
         return response;
@@ -40,13 +40,10 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-//    public Optional<ProductModel> getProductById(Long id){
-//        return productRepository.findById(id);
-//    }
-
     public ProductModel getProduct(Long productId) {
         return productRepository.findById(productId).orElse(null);
     }
+
     public void deleteProduct(Long productId) {
         productRepository.deleteById(productId);
     }
